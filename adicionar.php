@@ -1,12 +1,10 @@
 <?php
 session_start();
 // Incluir o arquivo da classe BancoDeDados
-require_once ('BancoDeDados.php');
+require_once('BancoDeDados.php');
 
 // Criar uma instância da classe BancoDeDados
 $bancoDeDados = new BancoDeDados('mysql:host=localhost;dbname=calculadoraimc', 'root', '');
-
-
 
 // Verificar se a requisição é do tipo POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,27 +16,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($altura && $peso) {
         // Os campos foram preenchidos corretamente
+        $altura = floatval($altura); // converter para float
+        $peso = floatval($peso); // converter para float
         if (preg_match($regex, $altura) && preg_match($regex, $peso)) {
-            // Altura e peso são números decimais maiores que zero
-            $imc = $peso / ($altura * $altura);
-            // Calcular o peso ideal
-            $pesoIdeal = (72.7 * $altura) - 58;
-            // Definir a classificação com base no IMC
-            if ($imc < 18.5) {
-                $classificacao = 'Abaixo do peso';
-            } elseif ($imc < 25) {
-                $classificacao = 'Peso normal';
-            } elseif ($imc < 30) {
-                $classificacao = 'Sobrepeso';
+            // Verificar se a altura é maior que 3 metros
+            if ($altura > 3) {
+                $_SESSION['validacao-erro'] = '<div class="validacao-erro">A altura não pode ser maior que 3 metros.</div>';
             } else {
-                $classificacao = 'Obesidade';
+                $imc = $peso / ($altura * $altura);
+                // Calcular o peso ideal
+                $pesoIdeal = (72.7 * $altura) - 58;
+                // Definir a classificação com base no IMC
+                if ($imc < 18.5) {
+                    $classificacao = 'Abaixo do peso';
+                } elseif ($imc < 25) {
+                    $classificacao = 'Peso normal';
+                } elseif ($imc < 30) {
+                    $classificacao = 'Sobrepeso';
+                } else {
+                    $classificacao = 'Obesidade';
+                }
+                // Adicionar o registro à tabela de IMCs
+                $bancoDeDados->inserirIMC($altura, $peso, $imc, $pesoIdeal, $classificacao);
+                // Redirecionar para a página inicial
+                $_SESSION['validacao-sucesso'] = '<div class="validacao-sucesso">Registro adicionado com sucesso.</div>';
+                header('Location: index.php');
+                exit;
             }
-            // Adicionar o registro à tabela de IMCs
-            $bancoDeDados->inserirIMC($altura, $peso, $imc, $pesoIdeal, $classificacao);
-            // Redirecionar para a página inicial
-            $_SESSION['validacao-sucesso'] = '<div class="validacao-sucesso">Registro adicionado com sucesso.</div>';
-            header('Location: index.php');
-            exit;
         } else {
             // Altura e peso devem ser números decimais maiores que zero
             $_SESSION['validacao-erro'] = '<div class="validacao-erro">Altura e peso devem ser números decimais maiores que zero.</div>';
