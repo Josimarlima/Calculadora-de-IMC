@@ -1,0 +1,99 @@
+/* Estilo personalizado para o botão de remover */
+#BotaoDeletar:hover {
+    color: #dc3545;
+}
+
+#BotaoDeletar {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 1% 5%;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Estilo personalizado para o formulário */
+.form-group label {
+    font-weight: bold;
+}
+
+/* Estilo personalizado para a tabela */
+table {
+    margin-right: 1.5%;
+    margin-left: 1.5%;
+    width: 99%;
+}
+
+
+/* Estilo personalizado para o link Home navbar*/
+#home-link {
+    font-weight: bold;
+    color: #eaeff5;
+    font-size: 1.5rem;
+    margin: 0;
+    background-color: #007bff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilo do titulo */
+h2 {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+/* Estilo das mensagens de validação */
+
+.validacao-sucesso {
+    background-color: #c3e6cb;
+    color: #155724;
+    border-color: #b1e3a1;
+}
+
+.validacao-erro {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+
+/* Responsividadae */
+@media (max-width: 576px) {
+
+    /* Estilo para telas menores que 576px */
+    .form-group label {
+        font-size: 0.8rem;
+    }
+
+    #home-link {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+
+    /* Estilo para telas entre 576px e 768px */
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    #home-link {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* Estilo para telas maiores que 768px */
+    .container {
+        max-width: 800px;
+    }
+
+    #home-link {
+        font-size: 1.5rem;
+    }
+}
+
