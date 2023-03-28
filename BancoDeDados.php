@@ -30,15 +30,15 @@ class BancoDeDados
     }
 
     // Insere um registro na tabela de IMCs
-    public function inserirIMC($altura, $peso)
+    public function inserirIMC($nome, $altura, $peso)
     {
-        $pessoa = new Pessoa($altura, $peso);
+        $pessoa = new Pessoa($nome, $altura, $peso);
         $imc = $pessoa->calcularIMC();
         $pesoIdeal = $pessoa->calcularPesoIdeal();
         $classificacao = $pessoa->getClassificacao();
 
-        $stmt = $this->pdo->prepare('INSERT INTO imc (altura, peso, imc, pesoIdeal, classificacao) VALUES (?, ?, ?, ?, ?)');
-        $stmt->execute([$altura, $peso, $imc, $pesoIdeal, $classificacao]);
+        $stmt = $this->pdo->prepare('INSERT INTO imc (nome, altura, peso, imc, pesoIdeal, classificacao) VALUES (?, ?, ?, ?, ?, ?)');
+        $stmt->execute([$nome, $altura, $peso, $imc, $pesoIdeal, $classificacao]);
     }
 
     // Recupera todos os registros da tabela de IMCs
@@ -48,7 +48,7 @@ class BancoDeDados
         $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($registros as &$registro) {
-            $pessoa = new Pessoa($registro['altura'], $registro['peso']);
+            $pessoa = new Pessoa($registro['nome'], $registro['altura'], $registro['peso']);
             $registro['imc'] = $pessoa->calcularIMC();
             $registro['classificacao'] = $pessoa->getClassificacao();
             $registro['pesoIdeal'] = $pessoa->calcularPesoIdeal();

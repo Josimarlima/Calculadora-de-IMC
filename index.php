@@ -22,6 +22,10 @@ if (isset($_SESSION['validacao-sucesso'])) {
 
 <form class="container" action="adicionar.php" method="post">
     <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" name="nome" required>
+    </div>
+    <div class="form-group">
         <label for="altura">Altura (metros):</label>
         <input type="text" class="form-control" id="altura" placeholder="Digite sua altura" name="altura" required>
     </div>
@@ -39,7 +43,7 @@ if (isset($_SESSION['validacao-sucesso'])) {
     <table class="table table-striped mt-3">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Nome</th>
                 <th>Altura</th>
                 <th>Peso</th>
                 <th>IMC</th>
@@ -66,7 +70,7 @@ if (isset($_SESSION['validacao-sucesso'])) {
             foreach ($registros as $registro) {
 
                 echo '<tr>';
-                echo '<td>' . $registro['id'] . '</td>';
+                echo '<td>' . $registro['nome'] . '</td>';
                 echo '<td>' . $registro['altura'] . '</td>';
                 echo '<td>' . $registro['peso'] . '</td>';
                 echo '<td>' . $registro['imc'] . '</td>';

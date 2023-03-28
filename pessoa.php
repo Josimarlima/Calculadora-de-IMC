@@ -3,11 +3,13 @@
 // Define a classe Pessoa para representar um indivíduo
 class Pessoa
 {
+    private $nome;
     private $altura;
     private $peso;
-
-    public function __construct($altura, $peso)
+    
+    public function __construct($nome, $altura, $peso)
     {
+        $this->nome = $nome;
         $this->altura = $altura;
         $this->peso = $peso;
     }

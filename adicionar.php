@@ -10,11 +10,15 @@ $bancoDeDados = new BancoDeDados('mysql:host=localhost;dbname=calculadoraimc', '
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validar a entrada do usuário
-    $altura = filter_input(INPUT_POST, 'altura', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+    $altura = filter_input(INPUT_POST, 'altura',
+        FILTER_SANITIZE_NUMBER_FLOAT,
+        FILTER_FLAG_ALLOW_FRACTION
+    );
     $peso = filter_input(INPUT_POST, 'peso', FILTER_VALIDATE_FLOAT);
     $regex = "/^[1-9][0-9]*\.?[0-9]+$/";
 
-    if ($altura && $peso) {
+    if ($nome && $altura && $peso) {
         // Os campos foram preenchidos corretamente
         $altura = floatval($altura); // converter para float
         $peso = floatval($peso); // converter para float
@@ -22,6 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Verificar se a altura é maior que 3 metros
             if ($altura > 3) {
                 $_SESSION['validacao-erro'] = '<div class="validacao-erro">A altura não pode ser maior que 3 metros.</div>';
+            } else if (!ctype_alpha($nome)) {
+                // Verificar se o nome contém somente letras
+                $_SESSION['validacao-erro'] = '<div class="validacao-erro">O campo nome deve conter somente letras.</div>';
             } else {
                 $imc = $peso / ($altura * $altura);
                 // Calcular o peso ideal
@@ -37,7 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $classificacao = 'Obesidade';
                 }
                 // Adicionar o registro à tabela de IMCs
-                $bancoDeDados->inserirIMC($altura, $peso, $imc, $pesoIdeal, $classificacao);
+                $bancoDeDados->inserirIMC($nome,
+                    $altura,
+                    $peso,
+                    $imc,
+                    $pesoIdeal,
+                    $classificacao
+                );
                 // Redirecionar para a página inicial
                 $_SESSION['validacao-sucesso'] = '<div class="validacao-sucesso">Registro adicionado com sucesso.</div>';
                 header('Location: index.php');
