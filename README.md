@@ -21,7 +21,7 @@
   <li>Baixar e instalar o XAMPP para Windows.</li>
   <li>Clonar este repositório para a pasta C:\xampp\htdocs.</li>
   <li>Iniciar o XAMPP e habilitar os módulos Apache e MySQL.</li>
-  <li>Acessar http://localhost/calculadora-imc no navegador para acessar a aplicação.</li>
+  <li>Acessar http://localhost/calculadora-de-imc no navegador para acessar a aplicação.</li>
 </ol>
 <h3>Linux e Mac</h3>
 <ol>
@@ -31,10 +31,11 @@
   <li>Acessar http://localhost/calculadora-imc no navegador para acessar a aplicação.</li>
 </ol>
 <h2>Funcionalidades da aplicação</h2>
-<p>A aplicação permite que o usuário informe sua altura e peso para calcular o IMC, peso ideal e classificação. Além disso, a aplicação permite que o usuário visualize todos os registros já cadastrados e exclua um registro específico.</p>
+<p>A aplicação permite que o usuário informe seu nome, altura e peso para calcular o IMC, peso ideal e classificação. Além disso, a aplicação permite que o usuário visualize todos os registros já cadastrados e exclua um registro específico.</p>
 <h2>Validações</h2>
 <p>A aplicação realiza algumas validações para garantir a correta inserção dos dados. São elas:</p>
 <ul>
+  <li>Nome deve conter apenas letras;</li>
   <li>Altura e peso devem ser números;</li>
   <li>A altura não pode ser maior que 3 metros.</li>
 </ul>
