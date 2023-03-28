@@ -11,10 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validar a entrada do usuário
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-    $altura = filter_input(INPUT_POST, 'altura',
-        FILTER_SANITIZE_NUMBER_FLOAT,
-        FILTER_FLAG_ALLOW_FRACTION
-    );
+    $altura = filter_input(INPUT_POST, 'altura',FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
     $peso = filter_input(INPUT_POST, 'peso', FILTER_VALIDATE_FLOAT);
     $regex = "/^[1-9][0-9]*\.?[0-9]+$/";
 
