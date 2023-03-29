@@ -15,8 +15,12 @@
 
 <body>
     <header>
-        
-            <div class="navbar-nav">
-                <p id="home-link">Calculadora de IMC</p>
-            </div>
+
+        <div class="navbar-nav">
+            <p id="home-link">Calculadora de IMC</p>
+        </div>
+        <div class="container mt-3">
+            <h1 class="titulo">Bem-vindo à Calculadora de IMC!</h1>
+            <p>Esta aplicação permite calcular o Índice de Massa Corporal (IMC) de uma pessoa, que é uma medida da gordura corporal baseada na altura e no peso. Para calcular o IMC, basta preencher o formulário abaixo com o seu nome, altura e peso, e clicar no botão "Calcular IMC". O resultado será exibido na tabela abaixo, juntamente com o peso ideal e a classificação do seu IMC.</p>
+        </div>
     </header>

@@ -12,6 +12,11 @@
     cursor: pointer;
 }
 
+/* Estilo da letr do titulo  */
+.titulo {
+    font-size: 175%;
+}
+
 /* Estilo personalizado para o formulário */
 .form-group label {
     font-weight: bold;
