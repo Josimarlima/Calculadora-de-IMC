@@ -7,14 +7,7 @@
   <li>POO</li>
   <li>Arquitetura MVC</li>
 </ul>
-<h2>Como fazer o deploy da aplicação usando container</h2>
-<p>Para fazer o deploy da aplicação usando container, é necessário seguir os seguintes passos:</p>
-<ol>
-  <li>Clonar este repositório para a máquina local.</li>
-  <li>Na raiz do projeto, executar o comando <code>docker build -t calculadora-imc .</code> para criar a imagem do container.</li>
-  <li>Em seguida, executar o comando <code>docker run -p 8080:80 calculadora-imc</code> para rodar o container na porta 8080.</li>
-</ol>
-<h2>Como fazer o deploy da aplicação somente com o XAMPP</h2>
+<h2>Como fazer o deploy da aplicaçãoo XAMPP</h2>
 <p>Para fazer o deploy da aplicação somente com o XAMPP, é necessário seguir os seguintes passos:</p>
 <h3>Windows</h3>
 <ol>
